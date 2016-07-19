@@ -1,0 +1,6 @@
+ArgumentParser
+Flask
+Flask-Script
+requests
+
+
