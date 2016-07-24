@@ -2,6 +2,7 @@ import json
 import urllib
 import requests
 from flask import Flask, render_template, request
+import os
 
 __author__ = 'cpuskarz'
 
@@ -35,15 +36,6 @@ def results():
     resp = json.loads(page)
     return resp
 
-
-'''
-@app.template_filter()
-def datetimefilter(value, format='%Y/%m/%d %H:%M'):
-    """convert a datetime to a different format."""
-    return value.strftime(format)
-
-app.jinja_env.filters['datetimefilter'] = datetimefilter
-'''
 
 if __name__ == '__main__':
     APPSERVER = os.getenv('app_server')
