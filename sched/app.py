@@ -1,19 +1,18 @@
-from flask import Flask, render_template, abort, jsonify, redirect
-from flask import request, url_for
-import datetime
-import os, sys
-import requests
 import json
+import urllib
+import requests
+from flask import Flask, render_template, request
 
 __author__ = 'cpuskarz'
 
 app = Flask(__name__)
 
-#APPSERVER = "http://127.0.0.1:5002"
+APPSERVER = "http://127.0.0.1:5002"
 
 @app.route('/')
 def drummer_list():
     u = APPSERVER + "/options"
+
     page = requests.get(u)
     options = page.json()
     #drummer_list = options["drummers"]
@@ -24,16 +23,28 @@ def drummer_list():
 @app.route("/about")
 def about():
     return render_template('about.html', title="About")
-    
 
+@app.route("/results")
+def results():
+    # Check for submitted vote
+    seldrummer = request.args.get('drummer')
+    seldrummer = seldrummer.replace(" ", "")
+    seldrummer = seldrummer.lower()
+    u = urllib.urlopen(APPSERVER + "/"+ seldrummer)
+    page = u.read()
+    resp = json.loads(page)
+    return resp
+
+
+'''
 @app.template_filter()
 def datetimefilter(value, format='%Y/%m/%d %H:%M'):
     """convert a datetime to a different format."""
     return value.strftime(format)
 
 app.jinja_env.filters['datetimefilter'] = datetimefilter
-
+'''
 
 if __name__ == '__main__':
-    APPSERVER = os.getenv('app_server')
+    #APPSERVER = os.getenv('app_server')
     app.run(debug=True, host='0.0.0.0')
