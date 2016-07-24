@@ -7,7 +7,7 @@ __author__ = 'cpuskarz'
 
 app = Flask(__name__)
 
-APPSERVER = "http://127.0.0.1:5002"
+#APPSERVER = "http://127.0.0.1:5002"
 
 @app.route('/')
 def drummer_list():
@@ -46,5 +46,5 @@ app.jinja_env.filters['datetimefilter'] = datetimefilter
 '''
 
 if __name__ == '__main__':
-    #APPSERVER = os.getenv('app_server')
+    APPSERVER = os.getenv('app_server')
     app.run(debug=True, host='0.0.0.0')
