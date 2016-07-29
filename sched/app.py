@@ -4,14 +4,14 @@ import requests
 from flask import Flask, render_template, request
 import os
 
-# Phase 3
+# Phase 3 - p5000
 
 __author__ = 'cpuskarz'
 
 
 app = Flask(__name__)
 
-APPSERVER = "http://192.168.99.100:5002"
+#APPSERVER = "http://192.168.99.100:5002"
 
 @app.route('/', methods=["GET"])
 def drummer_list():
@@ -37,5 +37,5 @@ def respick():
     return page
 
 if __name__ == '__main__':
-    #APPSERVER = os.getenv('app_server')
+    APPSERVER = os.getenv('app_server')
     app.run(debug=True, host='0.0.0.0')
