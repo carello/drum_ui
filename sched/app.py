@@ -8,6 +8,7 @@ import os
 
 __author__ = 'cpuskarz'
 
+#APPSERVER = "http://127.0.0.1:5002"
 app = Flask(__name__)
 
 
