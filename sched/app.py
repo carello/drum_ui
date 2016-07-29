@@ -8,11 +8,12 @@ import os
 
 __author__ = 'cpuskarz'
 
-#APPSERVER = "http://127.0.0.1:5002"
+
 app = Flask(__name__)
 
+APPSERVER = "http://192.168.99.100:5002"
 
-@app.route('/')
+@app.route('/', methods=["GET"])
 def drummer_list():
     u = APPSERVER + "/options"
     page = requests.get(u)
@@ -36,5 +37,5 @@ def respick():
     return page
 
 if __name__ == '__main__':
-    APPSERVER = os.getenv('app_server')
+    #APPSERVER = os.getenv('app_server')
     app.run(debug=True, host='0.0.0.0')
