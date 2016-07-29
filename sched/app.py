@@ -4,11 +4,12 @@ import requests
 from flask import Flask, render_template, request
 import os
 
+# Phase 3
+
 __author__ = 'cpuskarz'
 
 app = Flask(__name__)
 
-#APPSERVER = "http://127.0.0.1:5002"
 
 @app.route('/')
 def drummer_list():
