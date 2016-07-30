@@ -7,7 +7,7 @@ VOLUME ["/app/data"]
 # Install basic utilities
 RUN apt-get update
 RUN apt-get install -y python-pip
-#RUN pip install setuptools wheel
+RUN pip install setuptools wheel
 
 ADD . /app
 WORKDIR /app
